@@ -16,7 +16,7 @@ pub struct AtomicLock<T> {
 }
 
 impl<T> AtomicLock<T> {
-    pub fn new(data: T) -> Self {
+    pub const fn new(data: T) -> Self {
         AtomicLock {
             lock: AtomicBool::new(false),
             data: UnsafeCell::new(data),
