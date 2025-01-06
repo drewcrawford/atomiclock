@@ -10,5 +10,6 @@ license = "MIT OR Apache-2.0"
 keywords = ["async","lock","non-blocking","atomic"]
 categories = ["concurrency","no-std","no-std::no-alloc","rust-patterns"]
 exclude = [".*"]
+rust-version = "1.56.1"
 
 [dependencies]
