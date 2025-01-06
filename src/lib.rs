@@ -1,14 +1,18 @@
+#![no_std]
+
 
 /*! A Rust atomic lock type.
+
+![logo](art/logo.png)
 
 This is a simple atomic lock.
 
 There is no way to sleep the current thread if the lock is not available, what you do about that is up to you.
 */
 
-use std::cell::UnsafeCell;
-use std::fmt::{Debug, Display};
-use std::sync::atomic::{AtomicBool, Ordering};
+use core::cell::UnsafeCell;
+use core::fmt::{Debug, Display};
+use core::sync::atomic::{AtomicBool, Ordering};
 
 /**
 An atomic lock type.
@@ -82,7 +86,7 @@ impl<T> AtomicLock<T> {
 
 
 impl<T: Debug> Debug for AtomicLock<T> {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         let guard = self.lock();
         match guard {
             None => {
@@ -164,7 +168,7 @@ Guard cannot be cloned because doing so would involve locking a second time.  Si
 //display,
 
 impl <'a, T> Display for Guard<'a, T> where T: Display {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         self.data.fmt(f)
     }
 }
@@ -187,14 +191,14 @@ impl <'a, T> AsMut<T> for Guard<'a, T> {
 
 //deref/derefmut should be fine since we have the lock...
 
-impl <'a, T> std::ops::Deref for Guard<'a, T> {
+impl <'a, T> core::ops::Deref for Guard<'a, T> {
     type Target = T;
     fn deref(&self) -> &T {
         self.data
     }
 }
 
-impl <'a, T> std::ops::DerefMut for Guard<'a, T> {
+impl <'a, T> core::ops::DerefMut for Guard<'a, T> {
     fn deref_mut(&mut self) -> &mut T {
         self.data
     }

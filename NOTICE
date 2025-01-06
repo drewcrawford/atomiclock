@@ -1,0 +1,4 @@
+atomiclock https://sealedabstract.com/code/atomiclock
+A non-blocking lock that can be used in async contexts
+Copyright 2025 Drew Crawford.
+

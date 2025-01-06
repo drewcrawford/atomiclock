@@ -2,5 +2,13 @@
 name = "atomiclock"
 version = "0.1.0"
 edition = "2021"
+authors = ["Drew Crawford <drew@sealedabstract.com>"]
+description = "A non-blocking lock that can be used in async contexts"
+homepage = "https://sealedabstract.com/code/atomiclock"
+repository = "https://github.com/drewcrawford/atomiclock"
+license = "MIT OR Apache-2.0"
+keywords = ["async","lock","non-blocking","atomic"]
+categories = ["concurrency","no-std","no-std::no-alloc","rust-patterns"]
+exclude = [".*"]
 
 [dependencies]
